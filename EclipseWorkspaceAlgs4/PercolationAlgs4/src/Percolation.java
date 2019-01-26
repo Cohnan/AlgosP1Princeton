@@ -9,7 +9,7 @@
 public class Percolation {
 	// create n-by-n grid, with all sites blocked
 	private boolean[][] siteMatrix;
-	private int p;
+	private 
 	
 	
 	public Percolation(int n) {
