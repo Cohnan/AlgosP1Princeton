@@ -38,17 +38,17 @@ public class Percolation {
 		if (row == 1)      connectivity.union(0                , indexConversion(row, col));
 		if (row == length) connectivity.union(length*length + 1, indexConversion(row, col));
 		
-		if ((row - 1) - 1 >= 0        && siteMatrix[(row - 1) - 1][(col - 1) + 0] == true) {
-			
+		if ((row - 1) - 1 >= 0        && siteMatrix[(row - 1) - 1][(col - 1) + 0]) {
+			connectivity.union(indexConversion(row, col), indexConversion(row - 1, col));
 		}
-		if ((col - 1) - 1 >= 0        && siteMatrix[(row - 1) + 0][(col - 1) - 1] == true) {
-			
+		if ((col - 1) - 1 >= 0        && siteMatrix[(row - 1) + 0][(col - 1) - 1]) {
+			connectivity.union(indexConversion(row, col), indexConversion(row, col - 1));
 		}
-		if ((row - 1) + 1 <= length-1 && siteMatrix[(row - 1) + 1][(col - 1) + 0] == true) {
-			
+		if ((row - 1) + 1 <= length-1 && siteMatrix[(row - 1) + 1][(col - 1) + 0]) {
+			connectivity.union(indexConversion(row, col), indexConversion(row + 1, col));
 		}
-		if ((col - 1) + 1 <= length-1 && siteMatrix[(row - 1) + 0][(col - 1) + 1] == true) {
-			
+		if ((col - 1) + 1 <= length-1 && siteMatrix[(row - 1) + 0][(col - 1) + 1]) {
+			connectivity.union(indexConversion(row, col), indexConversion(row, col + 1));
 		}
 				
 	}
