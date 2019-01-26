@@ -6,20 +6,51 @@
  * @author cohnan
  *
  */
+
+import edu.princeton.cs.algs4.WeightedQuickUnionUF;
+
 public class Percolation {
+	
+	private int length;
 	// create n-by-n grid, with all sites blocked
 	private boolean[][] siteMatrix;
-	private 
+	private WeightedQuickUnionUF connectivity;
+	
 	
 	
 	public Percolation(int n) {
 		//Java, by default, initializes arrays with null or 0 like values.
-		siteMatrix = new boolean[n][n]; 
+		length = n;
+		siteMatrix = new boolean[n][n];
+		
+		connectivity = new WeightedQuickUnionUF(n*n + 2);
+		
+		// Set up virtual nodes and their connections as points labeled 0 and n*n + 1 (first and last)
+		// So, I have available the positions 1 through n^2
+		// NO: it makes problems if I have a 1 by 1 array and is unnecessary. Make the connections once
+		// on of the border nodes are opened.
 	}
 	
 	// open site (row, col) if it is not open already
 	public    void open(int row, int col) { 
-		siteMatrix[row - 1][col - 1] = true;
+		siteMatrix[row - 1][col - 1] = true; //Open site
+		// Connect to virtual nodes if this is an external site.
+		if (row == 1)      connectivity.union(0                , indexConversion(row, col));
+		if (row == length) connectivity.union(length*length + 1, indexConversion(row, col));
+		
+		if ((row - 1) - 1 >= 0        && siteMatrix[(row - 1) - 1][(col - 1) + 0] == true) {
+			
+		}
+		if ((col - 1) - 1 >= 0        && siteMatrix[(row - 1) + 0][(col - 1) - 1] == true) {
+			
+		}
+		if ((row - 1) + 1 <= length-1 && siteMatrix[(row - 1) + 1][(col - 1) + 0] == true) {
+			
+		}
+		if ((col - 1) + 1 <= length-1 && siteMatrix[(row - 1) + 0][(col - 1) + 1] == true) {
+			
+		}
+				
 	}
 	
 	// is site (row, col) open?
@@ -29,25 +60,28 @@ public class Percolation {
 	
 	// is site (row, col) full? (connected to row 1 via some path)
 	public boolean isFull(int row, int col) {
-		
+		return false;
 	}
 	
 	// number of open sites
 	public     int numberOfOpenSites() {
-		
+		return -1;
 	}
 	
 	// does the system percolate?
 	public boolean percolates() {
-		
+		return false;
+	}
+	
+	private int indexConversion(int row, int col) {
+		return length*(row-1) + col;
 	}
 	
 	/**
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		System.out.println("Percolation compiled and executed!");
 	}
 
 }

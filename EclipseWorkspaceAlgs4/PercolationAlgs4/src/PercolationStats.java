@@ -6,6 +6,7 @@
  * @author cohnan
  *
  */
+
 public class PercolationStats {
 	
 	// perform trials independent experiments on an n-by-n grid
