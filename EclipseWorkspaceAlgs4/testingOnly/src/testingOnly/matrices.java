@@ -4,7 +4,7 @@ public class matrices {
 
 	public static void main(String[] args) {
 		
-		int n = 3;
+		int n = 10;
 		boolean[][] matrix = new boolean[n][n];
 		
 		for (int i = 0; i < n; i++) {
