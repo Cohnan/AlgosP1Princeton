@@ -38,6 +38,8 @@ public class Percolation {
 		if(!siteMatrix[row - 1][col - 1]) {
 			siteMatrix[row - 1][col - 1]= true;
 			nOpen += 1;
+		} else {
+			return; //Para que no lo conecte si no se abre el sitio
 		}
 		// Connect to virtual nodes if this is an external site.
 		if (row == 1)      connectivity.union(0                , indexConversion(row, col));
@@ -87,7 +89,66 @@ public class Percolation {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		System.out.println("Percolation compiled and executed!");
+		System.out.println("Percolation compiles!");
+		
+		///////////////////////////////////////////////////////////////////////////////
+		Percolation perc1 = new Percolation(3);
+		
+		// Just made percolation shouldn't percolate:
+		if (perc1.percolates()) System.out.println("Recien iniciada. No deberia percolar.");
+		else System.out.println("Bien. No percola si recien iniciada.");
+		
+		// Abrir linea recta y esperar que percole
+		perc1.open(1, 2);
+		if (perc1.percolates()) System.out.println("No deberia percolar.1, 2");
+		else System.out.println("Bien. 1, 2");
+		perc1.open(2, 2);
+		if (perc1.percolates()) System.out.println("No deberia percolar. 2, 2");
+		else System.out.println("Bien. 2, 2");
+		perc1.open(3, 2);
+		if (perc1.percolates()) System.out.println("Bien. Abrilinea recta en columna 2");
+		else System.out.println("Mal. Deberia percolar al abrir linea recta");
+		
+		///////////////////////////////////////////////////////////////////////////////
+		// Linea recta mas peligrosa 1
+		Percolation perc2 = new Percolation(3);
+		
+		// Just made percolation shouldn't percolate:
+		if (perc1.percolates()) System.out.println("Recien iniciada. No deberia percolar.");
+		else System.out.println("Bien. No percola si recien iniciada.");
+		
+		// Abrir linea recta y esperar que percole
+		perc2.open(1, 1);
+		if (perc2.percolates()) System.out.println("No deberia percolar.1, 1");
+		else System.out.println("Bien. 1, 1");
+		perc2.open(2, 1);
+		if (perc2.percolates()) System.out.println("No deberia percolar. 2, 1");
+		else System.out.println("Bien. 2, 1");
+		perc2.open(3, 1);
+		if (perc2.percolates()) System.out.println("Bien. Abrilinea recta en columna 1");
+		else System.out.println("Mal. Deberia percolar al abrir linea recta");
+		
+		///////////////////////////////////////////////////////////////////////////////
+		// Linea recta mas peligrosa 1
+		Percolation perc3 = new Percolation(3);
+	
+		// Just made percolation shouldn't percolate:
+		if (perc3.percolates()) System.out.println("Recien iniciada. No deberia percolar.");
+		else System.out.println("Bien. No percola si recien iniciada.");
+		
+		// Abrir linea recta y esperar que percole
+		perc3.open(1, 1);
+		if (perc3.percolates()) System.out.println("No deberia percolar.1, 1");
+		else System.out.println("Bien. 1, 3");
+		perc3.open(2, 1);
+		if (perc3.percolates()) System.out.println("No deberia percolar. 2, 1");
+		else System.out.println("Bien. 2, 1");
+		perc3.open(3, 1);
+		if (perc3.percolates()) System.out.println("Bien. Abrilinea recta en columna 3");
+		else System.out.println("Mal. Deberia percolar al abrir linea recta");
+		System.out.println("Dice que hay: " + perc3.numberOfOpenSites() + " sitions abiertos");
+		
+		
 	}
 
 }
