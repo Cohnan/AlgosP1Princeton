@@ -37,8 +37,8 @@ public class PercolationStats {
 		
 		mean = StdStats.mean(results);
 		stddev = StdStats.stddev(results);
-		confidenceLo = mean - (1.96 / Math.sqrt(trials));
-		confidenceHi = mean + (1.96 / Math.sqrt(trials));
+		confidenceLo = mean - (1.96 * stddev / Math.sqrt(trials));
+		confidenceHi = mean + (1.96 * stddev / Math.sqrt(trials));
 	}
 	
 	// sample mean of percolation threshold
