@@ -7,5 +7,7 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="/media/cohnan/Data/Online Courses/Algorithms, Part I (Princeton)/algs4.jar"/>
+	<classpathentry kind="lib" path="/media/cohnan/Data/Online Courses/Algorithms, Part I (Princeton)/stdlib-package.jar"/>
+	<classpathentry kind="lib" path="/media/cohnan/Data/Online Courses/Algorithms, Part I (Princeton)/stdlib.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

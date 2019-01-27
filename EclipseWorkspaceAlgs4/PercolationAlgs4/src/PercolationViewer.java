@@ -21,7 +21,11 @@ public class PercolationViewer {
 		}
 
 		public static void main(String[] args){
-
+			
+			// Idea: in args store whether I want to read a file (where the next arg would be its name
+			// 		 or read from the console using Scanner
+			// 		 or read from stdio, in which case I can use the terminal or a file with stored inputs
+			
 			Scanner lector = new Scanner(System.in);
 			boolean fin = false;
 			//String input = "";
@@ -35,10 +39,10 @@ public class PercolationViewer {
 				int option = lector.nextInt();
 				switch(option){
 					case 1: // Initialize
-						System.out.println("--------- \nCreate Percolation \nEnter grid length: ");
+						System.out.println("--------- \nCreate Percolation System \nEnter grid length: ");
 					    int capacidad = lector.nextInt();
 						Controller.crearModelo(capacidad); 
-						System.out.println("Percolation created!");
+						System.out.println("Percolation system created!");
 						System.out.println("Number of open sites: " + Controller.numberOfOpenSites() + "\n---------");						
 						break;
 
