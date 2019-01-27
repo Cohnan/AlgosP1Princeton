@@ -4,8 +4,8 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 //import Percolation;
-import model.Percolation;
-import controller.Controller;
+//import model.Percolation;
+//import controller.Controller;
 
 
 public class PercolationViewer {
@@ -15,7 +15,7 @@ public class PercolationViewer {
 			System.out.println("2. Open site");
 			System.out.println("3. Check if site is open");
 			System.out.println("4. Check if site is full (connected to top)");
-			System.out.println("5. Give numer of open sites");
+			System.out.println("5. Check if the system percolates");
 			System.out.println("6. Exit");
 			System.out.println("Dar el numero de opcion a resolver, luego oprimir tecla Return: (e.g., 1):");
 		}
@@ -24,65 +24,78 @@ public class PercolationViewer {
 
 			Scanner lector = new Scanner(System.in);
 			boolean fin = false;
-			String dato = "";
-			String respuesta = "";
+			//String input = "";
+			boolean answer;
+			int row;
+			int col;
 
 			while( !fin ){
 				printMenu();
 
 				int option = lector.nextInt();
 				switch(option){
-					case 1:
+					case 1: // Initialize
 						System.out.println("--------- \nCreate Percolation \nEnter grid length: ");
 					    int capacidad = lector.nextInt();
 						Controller.crearModelo(capacidad); 
-						System.out.println("Arreglo Dinamico creado");
-						System.out.println("Numero actual de elementos " + Controller.darTamano() + "\n---------");						
+						System.out.println("Percolation created!");
+						System.out.println("Number of open sites: " + Controller.numberOfOpenSites() + "\n---------");						
 						break;
 
-					/*case 2:
-						System.out.println("--------- \nDar cadena (simple) a ingresar: ");
-						dato = lector.next();
-						Controller.agregar(dato);
-						System.out.println("Dato agregado");
-						System.out.println("Numero actual de elementos " + Controller.darTamano() + "\n---------");						
+					case 2: // open()
+						System.out.println("--------- \n:Open site \nEnter row and column separated by a space: ");
+						row = lector.nextInt();
+						col = lector.nextInt();
+						Controller.open(row, col);
+						System.out.println("Site opened: " + "(" + row + ", " + col +")");
+						System.out.println("Number of open sites: " + Controller.numberOfOpenSites() + "\n---------");						
 						break;
-
-					case 3:
-						System.out.println("--------- \nDar cadena (simple) a buscar: ");
-						dato = lector.next();
-						respuesta = Controller.buscar(dato);
-						if ( respuesta != null)
+					
+					case 3: // isOpen()
+						System.out.println("Check if site is open \nEnter row and column separated by a space: ");
+						row = lector.nextInt();
+						col = lector.nextInt();
+						answer = Controller.isOpen(row, col);
+						if (answer)
 						{
-							System.out.println("Dato encontrado: "+ respuesta);
+							System.out.println("Site " + "(" + row + ", " + col +") " + " is open!");
 						}
 						else
 						{
-							System.out.println("Dato NO encontrado");
+							System.out.println("Site " + "(" + row + ", " + col +") " + " is NOT open!");
 						}
-						System.out.println("Numero actual de elementos " + Controller.darTamano() + "\n---------");						
+						System.out.println("Number of open sites: " + Controller.numberOfOpenSites() + "\n---------");						
 						break;
-
-					case 4:
-						System.out.println("--------- \nDar cadena (simple) a eliminar: ");
-						dato = lector.next();
-						respuesta = Controller.eliminar(dato);
-						if ( respuesta != null)
+							
+					case 4: // isFull()
+						System.out.println("Check if site is full \nEnter row and column separated by a space: ");
+						row = lector.nextInt();
+						col = lector.nextInt();
+						answer = Controller.isFull(row, col);
+						if (answer)
 						{
-							System.out.println("Dato eliminado "+ respuesta);
+							System.out.println("Site " + "(" + row + ", " + col +")" + " is full!");
 						}
 						else
 						{
-							System.out.println("Dato NO eliminado");							
+							System.out.println("Site " + "(" + row + ", " + col +") " + " is NOT full!");
 						}
-						System.out.println("Numero actual de elementos " + Controller.darTamano() + "\n---------");						
+						System.out.println("Number of open sites: " + Controller.numberOfOpenSites() + "\n---------");						
 						break;
-						
-					case 5: 
-						System.out.println("--------- \n Hasta pronto !! \n---------"); 
-						lector.close();
-						fin = true;
-						break;	*/
+					
+					case 5: // percolates()
+						System.out.println("Check if system percolates \nEnter row and column separated by a space: ");
+						answer = Controller.percolates();
+						if (answer)
+						{
+							System.out.println("THE SYSTEM PERCOLATES!");
+						}
+						else
+						{
+							System.out.println("THE SYSTEM DOES NOT PERCOLATE!");
+						}
+						System.out.println("Number of open sites: " + Controller.numberOfOpenSites() + "\n---------");						
+						break;
 
 					case 6: 
 						System.out.println("--------- \n Hasta pronto !! \n---------"); 

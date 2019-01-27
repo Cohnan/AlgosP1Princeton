@@ -1,12 +1,12 @@
 
 
-import model.data_structures.ArregloDinamico;
-import model.data_structures.IArregloDinamico;
+/*import model.data_structures.ArregloDinamico;
+import model.data_structures.IArregloDinamico;*/
 
 public class Controller {
 
 	/* Instancia del Modelo del mundo */
-	private static IArregloDinamico modelo = new ArregloDinamico(7);
+	private static Percolation modelo = new Percolation(7);
 	
 	/**
 	 * Requerimiento crear Arreglo Dinamico
@@ -14,16 +14,16 @@ public class Controller {
 	 */
 	public static void crearModelo(int capacidad)
 	{
-		modelo = new ArregloDinamico(capacidad);
+		modelo = new Percolation(capacidad);
 	}
 	
 	/**
 	 * Requerimiento agregar elemento
 	 * @param dato Dato a agregar al final del arreglo
 	 */
-	public static void agregar(String dato)
+	public static void open(int row, int col)
 	{
-		modelo.agregar(dato);
+		modelo.open(row, col);
 	}
 	
 	/**
@@ -31,9 +31,9 @@ public class Controller {
 	 * @param dato Dato a buscar
 	 * @return dato encontrado
 	 */
-	public static String buscar(String dato)
+	public static boolean isFull (int row, int col)
 	{
-		return modelo.buscar(dato);
+		return modelo.isFull(row, col);
 	}
 	
 	/**
@@ -41,9 +41,9 @@ public class Controller {
 	 * @param dato Dato a eliminar
 	 * @return dato eliminado
 	 */
-	public static String eliminar(String dato)
+	public static boolean isOpen(int row, int col)
 	{
-		return modelo.eliminar(dato);
+		return modelo.isOpen(row, col);
 	}
 	
 	
@@ -51,9 +51,13 @@ public class Controller {
 	 * Servicio de consulta de numero de elementos presentes en el arreglo 
 	 * @return numero de elementos presentes en el arreglo
 	 */
-	public static int darTamano()
+	public static int numberOfOpenSites()
 	{
-		return modelo.darTamano();
+		return modelo.numberOfOpenSites();
+	}
+	
+	public static boolean percolates( ) {
+		return modelo.percolates( );
 	}
 	
 }
