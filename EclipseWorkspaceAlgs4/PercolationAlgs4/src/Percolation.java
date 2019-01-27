@@ -13,9 +13,9 @@ public class Percolation {
 	
 	private int length;
 	private int nOpen;
-	// create n-by-n grid, with all sites blocked
 	private boolean[][] siteMatrix;
-	private WeightedQuickUnionUF connectivity;
+//	private WQUPC_UF connectivity;							// Change underlying UF structure to be WQUPC_UF
+	private WeightedQuickUnionUF connectivity;				// Change underlying UF structure to be WeightedQuickUnionUF
 	
 	
 	
@@ -24,7 +24,8 @@ public class Percolation {
 		length = n;
 		siteMatrix = new boolean[n][n];
 		nOpen = 0;
-		connectivity = new WeightedQuickUnionUF(n*n + 2);
+		//connectivity = new WQUPC_UF(n*n + 2);				// Change underlying UF structure to be WQUPC_UF
+		connectivity = new WeightedQuickUnionUF(n*n + 2);	// Change underlying UF structure to be WeightedQuickUnionUF
 		
 		// Set up virtual nodes and their connections as points labeled 0 and n*n + 1 (first and last)
 		// So, I have available the positions 1 through n^2
