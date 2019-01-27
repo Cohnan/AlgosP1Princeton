@@ -1,4 +1,4 @@
-
+package model;
 
 public class WQUPC_UF {
 	private int[] id;

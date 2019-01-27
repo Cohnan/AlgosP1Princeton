@@ -1,4 +1,7 @@
-
+package model;
+/**
+ * A class whose objects represent the material, it knows nothing about the probability of openness
+ */
 
 /**
  * @author cohnan

@@ -1,19 +1,22 @@
 package view;
 
-import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.ArrayList;
 
+//import Percolation;
+import model.Percolation;
 import controller.Controller;
-import model.data_structures.IArregloDinamico;;
 
-public class MVCExample {
+
+public class PercolationViewer {
 
 		private static void printMenu(){
-			System.out.println("1. Crear Arreglo Dinamico de Strings");
-			System.out.println("2. Agregar String");
-			System.out.println("3. Buscar String");
-			System.out.println("4. Eliminar String");
-			System.out.println("5. Exit");
+			System.out.println("1. Create Percolation");
+			System.out.println("2. Open site");
+			System.out.println("3. Check if site is open");
+			System.out.println("4. Check if site is full (connected to top)");
+			System.out.println("5. Give numer of open sites");
+			System.out.println("6. Exit");
 			System.out.println("Dar el numero de opcion a resolver, luego oprimir tecla Return: (e.g., 1):");
 		}
 
@@ -30,14 +33,14 @@ public class MVCExample {
 				int option = lector.nextInt();
 				switch(option){
 					case 1:
-						System.out.println("--------- \nCrear Arreglo \nDar capacidad inicial del arreglo: ");
+						System.out.println("--------- \nCreate Percolation \nEnter grid length: ");
 					    int capacidad = lector.nextInt();
 						Controller.crearModelo(capacidad); 
 						System.out.println("Arreglo Dinamico creado");
 						System.out.println("Numero actual de elementos " + Controller.darTamano() + "\n---------");						
 						break;
 
-					case 2:
+					/*case 2:
 						System.out.println("--------- \nDar cadena (simple) a ingresar: ");
 						dato = lector.next();
 						Controller.agregar(dato);
@@ -74,12 +77,18 @@ public class MVCExample {
 						}
 						System.out.println("Numero actual de elementos " + Controller.darTamano() + "\n---------");						
 						break;
-
+						
 					case 5: 
 						System.out.println("--------- \n Hasta pronto !! \n---------"); 
 						lector.close();
 						fin = true;
-						break;		  
+						break;	*/
+
+					case 6: 
+						System.out.println("--------- \n Hasta pronto !! \n---------"); 
+						lector.close();
+						fin = true;
+						break;  
 
 					default: 
 						System.out.println("--------- \n Opcion Invalida !! \n---------");
