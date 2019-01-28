@@ -19,6 +19,7 @@ public class Percolation {
 	
 	public Percolation(int n) {
 		//Java, by default, initializes arrays with null or 0 like values.
+		if (n <= 0) throw new IllegalArgumentException();
 		length = n;
 		siteMatrix = new boolean[n][n];
 		nOpen = 0;
@@ -33,6 +34,8 @@ public class Percolation {
 	
 	// open site (row, col) if it is not open already
 	public    void open(int row, int col) { 
+		if (row <= 0 || col <= 0) throw new IllegalArgumentException();
+		
 		//Open site and increment n of open sites
 		if(!siteMatrix[row - 1][col - 1]) {
 			siteMatrix[row - 1][col - 1]= true;
@@ -62,11 +65,15 @@ public class Percolation {
 	
 	// is site (row, col) open?
 	public boolean isOpen(int row, int col) {
+		if (row <= 0 || col <= 0) throw new IllegalArgumentException();
+		
 		return siteMatrix[row - 1][col - 1];
 	}
 	
 	// is site (row, col) full? (connected to row 1 via some path)
 	public boolean isFull(int row, int col) {
+		if (row <= 0 || col <= 0) throw new IllegalArgumentException();
+		
 		return connectivity.connected(indexConversion(row, col), 0);
 	}
 	

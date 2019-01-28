@@ -9,6 +9,7 @@ import edu.princeton.cs.algs4.StdRandom;
 import edu.princeton.cs.algs4.StdStats;
 
 import java.lang.Math;
+import java.lang.*;
 
 public class PercolationStats {
 	
@@ -66,7 +67,15 @@ public class PercolationStats {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		PercolationStats statistician = new PercolationStats(Integer.parseInt(args[0]), Integer.parseInt(args[1]));
+		int size;
+		int trials;
+		try {
+			size = Integer.parseInt(args[0]);
+			trials = Integer.parseInt(args[1]);
+		} catch (java.lang.NumberFormatException e) {
+			throw(new IllegalArgumentException());
+		}
+		PercolationStats statistician = new PercolationStats(size, trials);
 		
 		System.out.println("mean \t\t\t\t = " + statistician.mean());
 		System.out.println("stddev\t\t\t\t = " + statistician.stddev());
