@@ -13,7 +13,7 @@ import java.lang.*;
 
 public class PercolationStats {
 	
-	Percolation percolation;
+	private Percolation percolation;
 	private double mean;
 	private double stddev;
 	private double confidenceLo;
